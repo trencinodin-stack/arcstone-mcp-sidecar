@@ -80,10 +80,49 @@ Exactly-once execution is not claimed.
 - T16 authorized request with induced actuator failure
 - T17 concurrent double submit
 
-## Important experimental split
+## Experimental split
 
-T0–T6, T10–T17 are primarily executable in the native test harness.
+T0–T6 and T10–T17 are primarily executable in the native test harness.
 
-T7 and T9 require a real OS authority configuration using separate principals. T8 is partly structural in the Rust implementation and must also be validated in the target authority environment.
+T7 and T9 require a real OS authority configuration using separate principals. T8 is partly structural in the Rust implementation and also depends on the tested authority environment.
 
-The experiment is not complete until the environment-level bypass tests are recorded.
+The bounded Windows authority-boundary experiment has now been completed using distinct non-administrator producer and authority principals and explicit filesystem ACL separation.
+
+The environment-level results were:
+
+- T7 direct protected-resource bypass: PASS under the tested ACL configuration
+- T8 direct actuator bypass: PASS — bounded public-API/structural result
+- T9 forged authorization issuance: PASS under the tested ACL configuration
+- I2 single-use / at-most-once authority: supported for the tested authorization
+- I3 producer-to-protected-resource separation: supported for the tested Windows configuration
+
+The authorized execution transitioned the tested authorization from `ISSUED` to `CONSUMED`, performed the protected actuation successfully, and preserved the expected protected effect. Reuse of the same authorization was subsequently denied as consumed before another actuation attempt.
+
+The Windows experiment is complete and frozen as a bounded environment-level result.
+
+See [`docs/WINDOWS-AUTHORITY-BOUNDARY.md`](docs/WINDOWS-AUTHORITY-BOUNDARY.md) for the detailed evidence record, preserved evidence hashes, test configuration, and limitations.
+
+## Interpretation boundary
+
+The completed Windows experiment supports the tested producer/authority separation under the recorded ACL configuration.
+
+It does not establish:
+
+- general Windows sandbox security
+- arbitrary hostile-code containment
+- process isolation against the trusted authority principal
+- universal bypass resistance
+- production authorization or network security
+- distributed exactly-once execution
+- cryptographic capability security
+- MCP or WASM security properties
+
+The authority principal retains filesystem authority within the experimental runtime. The result therefore establishes bounded principal-level separation between the tested producer and authority roles; it does not establish that `arcstone-exec` is the only process the authority principal could use to modify protected state.
+
+T8 establishes that an external Rust consumer cannot import the production actuator through the crate's public API, combined with the tested producer's lack of direct filesystem write authority. It does not establish that no conceivable Windows bypass exists.
+
+The experiment does not require expansion into MCP, WASM, network transport, PKI, service accounts, generalized actuators, or additional architectural layers.
+
+## Working principle
+
+> **Evidence before expansion. Preserve the core. Test the boundary. Freeze completed evidence.**
