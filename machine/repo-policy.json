@@ -1,0 +1,27 @@
+{
+  "schema": "arcstone-execution-boundary/repo-policy-v1",
+  "may_modify_upstream": false,
+  "may_reinterpret_upstream": false,
+  "producer_identity_authoritative": false,
+  "core_result_authoritative_for_execution": false,
+  "frozen_evidence_mutable": false,
+  "allowed_v0_1_scope": [
+    "local-cli",
+    "explicit-request",
+    "issuer-fixture",
+    "authorization-store",
+    "deterministic-gate",
+    "atomic-single-use-claim",
+    "protected-file-actuator",
+    "evidence-capture"
+  ],
+  "requires_new_research_question_before_addition": [
+    "mcp",
+    "wasm",
+    "network-service",
+    "cryptographic-capabilities",
+    "generalized-policy-engine",
+    "multiple-actuators",
+    "package-distribution"
+  ]
+}

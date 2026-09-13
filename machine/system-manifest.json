@@ -1,0 +1,50 @@
+{
+  "schema": "arcstone-execution-boundary/system-manifest-v1",
+  "system": "Arcstone Execution Boundary",
+  "repository": "arcstone-mcp-sidecar",
+  "version": "0.1.0",
+  "classification": [
+    "experimental",
+    "downstream",
+    "non-canonical"
+  ],
+  "stage": "pre-evidence",
+  "machine_first": true,
+  "canonical_authority": false,
+  "upstream": {
+    "continuity_core": {
+      "status": "frozen",
+      "runtime_required": false
+    },
+    "path_a_ingress_lab": {
+      "status": "complete-frozen",
+      "runtime_required": false
+    }
+  },
+  "primary_question": "Can a deterministic downstream execution boundary prevent an untrusted or nondeterministic producer from causing a protected side effect unless explicit boundary-controlled authorization has been satisfied?",
+  "initial_transport": [
+    "local-cli",
+    "stdio"
+  ],
+  "protected_operation": "WRITE_PROTECTED_FILE",
+  "protected_resource_id": "EFFECT_LOG",
+  "authorization_semantics": "single-use-at-most-once",
+  "deferred": [
+    "mcp",
+    "wasm",
+    "hmac",
+    "pki",
+    "network-api",
+    "policy-dsl",
+    "agent-framework",
+    "package-distribution"
+  ],
+  "status_files": [
+    "STATUS.md",
+    "BUILD-REPORT.md",
+    "EXPERIMENT.md"
+  ],
+  "agent_instructions": "AGENTS.md",
+  "machine_protocol": "machine/protocol.json",
+  "test_matrix": "machine/test-matrix.json"
+}

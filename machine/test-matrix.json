@@ -1,0 +1,95 @@
+{
+  "schema": "arcstone-execution-boundary/test-matrix-v1",
+  "tests": [
+    {
+      "id": "T0",
+      "name": "valid_exact_authorization",
+      "expected": "ALLOW_CONSUMED_SUCCEEDED_ONE_EFFECT"
+    },
+    {
+      "id": "T1",
+      "name": "no_authorization",
+      "expected": "DENY_ZERO_EFFECT"
+    },
+    {
+      "id": "T2",
+      "name": "invalid_authorization",
+      "expected": "DENY_ZERO_EFFECT"
+    },
+    {
+      "id": "T3",
+      "name": "payload_mutation",
+      "expected": "DENY_ZERO_EFFECT"
+    },
+    {
+      "id": "T4",
+      "name": "resource_substitution",
+      "expected": "DENY_ZERO_EFFECT"
+    },
+    {
+      "id": "T5",
+      "name": "action_substitution",
+      "expected": "DENY_ZERO_EFFECT"
+    },
+    {
+      "id": "T6",
+      "name": "replay",
+      "expected": "DENY_ZERO_ADDITIONAL_EFFECT"
+    },
+    {
+      "id": "T7",
+      "name": "direct_resource_bypass",
+      "expected": "OS_DENY_ZERO_EFFECT"
+    },
+    {
+      "id": "T8",
+      "name": "direct_actuator_bypass",
+      "expected": "DENY_OR_UNREACHABLE_ZERO_EFFECT"
+    },
+    {
+      "id": "T9",
+      "name": "forged_issuance",
+      "expected": "OS_DENY_ZERO_EFFECT"
+    },
+    {
+      "id": "T10",
+      "name": "issued_not_submitted",
+      "expected": "NO_ACTUATION"
+    },
+    {
+      "id": "T11",
+      "name": "producer_identity_change",
+      "expected": "SAME_DECISION"
+    },
+    {
+      "id": "T12",
+      "name": "favorable_core_without_authorization",
+      "expected": "DENY_ZERO_EFFECT"
+    },
+    {
+      "id": "T13",
+      "name": "authorization_core_omitted",
+      "expected": "ALLOW_IF_EXACT_BINDINGS"
+    },
+    {
+      "id": "T14",
+      "name": "malformed_request",
+      "expected": "DENY_ZERO_EFFECT"
+    },
+    {
+      "id": "T15",
+      "name": "invalid_attempts_do_not_consume",
+      "expected": "AUTH_REMAINS_ISSUED"
+    },
+    {
+      "id": "T16",
+      "name": "authorized_actuator_failure",
+      "expected": "ALLOW_CONSUMED_FAILED_ZERO_EFFECT"
+    },
+    {
+      "id": "T17",
+      "name": "concurrent_double_submit",
+      "expected": "AT_MOST_ONE_ALLOW_AND_EFFECT"
+    }
+  ]
+}
