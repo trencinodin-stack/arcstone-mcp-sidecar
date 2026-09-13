@@ -4,7 +4,7 @@
 **System:** Arcstone Execution Boundary
 **Version:** 0.1.0 implementation starter
 **Classification:** Experimental / Downstream / Non-Canonical
-**Current stage:** Minimal native implementation / pre-evidence
+**Current stage:** Minimal native implementation / bounded Windows evidence complete
 
 ## Frozen upstream
 
@@ -35,11 +35,21 @@ Included:
 
 Not yet validated:
 
-- OS-principal isolation on the user's target machine
 - final T0–T17 evidence run
 - frozen Run 001 evidence for this repository
 
-Deferred:
+## Windows authority-boundary evidence
+
+- bounded Windows two-principal authority experiment: complete
+- T7 direct protected-resource bypass: PASS under tested ACL configuration
+- T8 direct actuator bypass: PASS — bounded public-API/structural result
+- T9 forged authorization issuance: PASS under tested ACL configuration
+- I2 single-use / at-most-once authority: supported for the tested authorization
+- I3 producer-to-protected-resource separation: supported for the tested Windows configuration
+- evidence package frozen and hash-anchored
+- no claim of general Windows sandbox security
+
+## Deferred
 
 - MCP
 - WASM

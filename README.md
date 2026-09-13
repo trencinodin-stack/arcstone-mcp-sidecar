@@ -2,7 +2,7 @@
 
 **Repository identity:** `arcstone-mcp-sidecar`
 **Implementation package:** `arcstone-execution-boundary`
-**Status:** Experimental / Downstream / Non-Canonical / Pre-Evidence
+**Status:** Experimental / Downstream / Non-Canonical / Bounded Evidence
 **Version:** 0.1.0 implementation starter
 
 This repository is the initial native implementation of the frozen **Arcstone Execution Boundary v0.1 experimental specification**.
@@ -79,7 +79,7 @@ runtime/
     └── <run-id>/
 ```
 
-An authorization record is trusted because the untrusted producer is not permitted to create or modify the `auth` tree. The authorization identifier itself carries no authority.
+An authorization record is trusted because the untrusted producer is not permitted to create or modify the `auth` tree under the tested authority configuration. The authorization identifier itself carries no authority.
 
 The `consumed/<authorization-id>.claim` file is created with `create_new(true)`. That atomic local reservation is the v0.1 single-use claim primitive.
 
@@ -137,23 +137,27 @@ arcstone-exec inspect --root runtime --auth-id AUTH-001
 
 A replay of the same request should return a denied result because the claim already exists.
 
-## Important OS-boundary note
+## Windows authority-boundary evidence
 
-The Rust tests can verify deterministic authorization, binding, consumption, replay, failure separation, and concurrent claiming.
+The Rust tests verify deterministic authorization, binding, consumption, replay, failure separation, and concurrent claiming.
 
-They **cannot prove exclusive OS authority when producer and boundary run as the same Windows user**.
+They cannot by themselves prove producer-to-resource authority separation when producer and boundary run under the same Windows principal.
 
-The v0.1 evidence run must therefore include a separate authority configuration in which the producer principal cannot:
+A separate bounded Windows authority experiment was therefore completed using distinct non-administrator producer and authority principals and a dedicated disposable runtime with explicit ACL separation.
 
-1. write the protected target;
-2. write the authorization store; or
-3. invoke a bypass path with equivalent filesystem authority.
+Observed results:
 
-See [`docs/WINDOWS-AUTHORITY-BOUNDARY.md`](docs/WINDOWS-AUTHORITY-BOUNDARY.md).
+- T7 direct protected-resource bypass: PASS under the tested ACL configuration
+- T8 direct actuator bypass: PASS — bounded public-API/structural result
+- T9 forged authorization issuance: PASS under the tested ACL configuration
+- I2 single-use / at-most-once authority: supported for the tested authorization
+- I3 producer-to-protected-resource separation: supported for the tested Windows configuration
 
-Do not describe the OS authority invariant as validated until that environment-level test passes.
+The successful authorized execution transitioned the tested authorization from `Issued` to `Consumed`, created the expected protected effect, and a replay was denied before a second actuation attempt.
 
+This evidence does **not** establish general Windows sandbox security, arbitrary hostile-code containment, production authorization security, or universal bypass resistance.
 
+See [`docs/WINDOWS-AUTHORITY-BOUNDARY.md`](docs/WINDOWS-AUTHORITY-BOUNDARY.md) for the complete bounded evidence record and freeze limitations.
 
 ## Machine / AI / autonomous-agent navigation
 
@@ -181,7 +185,7 @@ Recommended automated traversal:
 4. Read STATUS.md
 5. Read EXPERIMENT.md
 6. Run cargo test
-7. Do not claim OS authority validation until the separate-principal checks pass
+7. Read docs/WINDOWS-AUTHORITY-BOUNDARY.md before making OS-authority claims
 ```
 
 Humans are not required in the deterministic request/decision path. Human-facing prose exists primarily for governance, scientific interpretation, and review.

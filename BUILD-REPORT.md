@@ -3,7 +3,7 @@
 **Repository:** `arcstone-mcp-sidecar`
 **System:** Arcstone Execution Boundary
 **Version:** 0.1.0 implementation starter
-**Status:** PRE-EVIDENCE / NOT YET VALIDATED
+**Status:** BOUNDED EVIDENCE ESTABLISHED / RUN 001 NOT YET FROZEN
 
 ## Purpose
 
@@ -26,25 +26,59 @@ This report gives humans and machine operators one compact place to determine wh
 - actuator-failure test
 - concurrent double-submit test
 - Windows authority-boundary procedure
+- corrected Windows producer-access harness
 - CI workflow
+
+## Established
+
+- successful compile and test on the target Windows machine
+- local Windows verification script PASS
+- separate non-administrator producer and authority principals established for the bounded Windows experiment
+- explicit filesystem ACL separation established in a dedicated disposable runtime
+- T7 direct protected-resource bypass denial: PASS under the tested ACL configuration
+- T8 direct actuator bypass: PASS — bounded public-API/structural result
+- T9 forged-issuance denial: PASS under the tested ACL configuration
+- authorized execution: `ISSUED` → `CONSUMED`, decision `ALLOW`, actuation `SUCCEEDED`
+- replay of consumed authorization: `DENY`, actuation `NOT_ATTEMPTED`
+- I2 single-use / at-most-once authority supported for the tested authorization
+- I3 producer-to-protected-resource separation supported for the tested Windows configuration
+- bounded Windows evidence package frozen and hash-anchored
 
 ## Not Yet Established
 
-- successful compile/test on the target Windows machine
-- real producer-vs-authority Windows principal separation
-- T7 direct protected-resource bypass denial
-- T8 environment-level direct actuator bypass denial
-- T9 forged-issuance denial under Windows ACLs
+- final integrated T0–T17 evidence run
 - frozen Execution Boundary Run 001 evidence
+- production authorization security
+- general Windows sandbox security
+- arbitrary hostile-code containment
+- universal bypass resistance
+- distributed exactly-once execution
+
+## Evidence boundary
+
+The completed Windows authority-boundary experiment is a bounded environment-level result.
+
+It establishes that, under the recorded two-principal Windows configuration and ACLs, the tested producer principal could not directly create the protected-resource probe or forge an authorization record. The tested authorization was consumed on successful execution, and replay was denied before another actuation attempt.
+
+T8 additionally establishes that an external Rust consumer cannot import the production actuator through the crate's public API. This is a bounded structural result and is not a claim that no conceivable Windows bypass exists.
+
+The authority principal retains filesystem authority within the experimental runtime. The experiment therefore demonstrates tested producer/authority separation, not exclusive process-level control by `arcstone-exec`.
+
+See [`docs/WINDOWS-AUTHORITY-BOUNDARY.md`](docs/WINDOWS-AUTHORITY-BOUNDARY.md) for the detailed evidence record, preserved hashes, configuration, and limitations.
 
 ## Machine Decision
 
 ```text
 implementation_present = true
+windows_bounded_evidence_complete = true
 experiment_complete = false
 evidence_frozen = false
 production_ready = false
 canonical_authority = false
 ```
+
+`windows_bounded_evidence_complete = true` refers only to the completed and frozen bounded Windows authority-boundary experiment.
+
+`experiment_complete = false` and `evidence_frozen = false` remain in force until the final integrated T0–T17 evidence run and Execution Boundary Run 001 are completed and frozen.
 
 Do not infer more than these fields support.
