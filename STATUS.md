@@ -4,7 +4,7 @@
 **System:** Arcstone Execution Boundary
 **Version:** 0.1.0 implementation starter
 **Classification:** Experimental / Downstream / Non-Canonical
-**Current stage:** Minimal native implementation / integrated RUN-001 evidence frozen
+**Current stage:** Minimal native implementation / integrated RUN-001 evidence frozen / CLI interface gate validated
 
 ## Frozen upstream
 
@@ -37,6 +37,8 @@ Validated:
 
 - final integrated T0-T17 evidence run: PASS
 - Execution Boundary RUN-001 evidence package: frozen and hash-anchored
+- CLI interface contract: validated by automated integration tests
+- stable CLI behaviors: help/version, deterministic option rejection, machine-readable JSON inspection, and DENY-as-success exit semantics
 
 ## Windows authority-boundary evidence
 

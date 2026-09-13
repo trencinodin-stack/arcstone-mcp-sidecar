@@ -3,7 +3,7 @@
 **Repository:** `arcstone-mcp-sidecar`
 **System:** Arcstone Execution Boundary
 **Version:** 0.1.0 implementation starter
-**Status:** INTEGRATED T0-T17 PASS / RUN 001 FROZEN
+**Status:** INTEGRATED T0-T17 PASS / RUN 001 FROZEN / CLI INTERFACE GATE VALIDATED
 
 ## Purpose
 
@@ -25,6 +25,10 @@ This report gives humans and machine operators one compact place to determine wh
 - core/evaluation separation tests
 - actuator-failure test
 - concurrent double-submit test
+- stable CLI help and version surface
+- deterministic CLI option validation
+- machine-readable JSON authorization inspection
+- automated CLI interface integration tests
 - Windows authority-boundary procedure
 - corrected Windows producer-access harness
 - CI workflow
@@ -45,6 +49,14 @@ This report gives humans and machine operators one compact place to determine wh
 - bounded Windows evidence package frozen and hash-anchored
 - final integrated T0-T17 evidence run: PASS
 - Execution Boundary RUN-001 evidence package frozen and hash-anchored
+- CLI help and version commands return successful process status
+- malformed, unknown, and duplicate CLI options are rejected deterministically
+- authorization inspection emits a single machine-readable JSON object
+- issue and inspect surfaces are machine-readable JSON
+- valid protocol `DENY` remains a successful CLI execution with process exit code 0
+- CLI interface contract validated by automated integration tests
+- full `cargo test --all-targets` regression suite PASS with CLI interface tests included
+- Windows verification script PASS with CLI interface tests included
 
 ## Not Yet Established
 
@@ -64,7 +76,9 @@ T8 additionally establishes that an external Rust consumer cannot import the pro
 
 The authority principal retains filesystem authority within the experimental runtime. The experiment therefore demonstrates tested producer/authority separation, not exclusive process-level control by `arcstone-exec`.
 
-See [`docs/WINDOWS-AUTHORITY-BOUNDARY.md`](docs/WINDOWS-AUTHORITY-BOUNDARY.md) for the detailed evidence record, preserved hashes, configuration, and limitations.
+The validated CLI interface gate establishes the tested command-line contract for the experimental v0.1 implementation. It does not establish package-distribution readiness, production API stability, network protocol compatibility, or canonical authority.
+
+See [`docs/WINDOWS-AUTHORITY-BOUNDARY.md`](docs/WINDOWS-AUTHORITY-BOUNDARY.md) for the detailed Windows evidence record, preserved hashes, configuration, and limitations.
 
 ## Machine Decision
 
@@ -72,11 +86,14 @@ See [`docs/WINDOWS-AUTHORITY-BOUNDARY.md`](docs/WINDOWS-AUTHORITY-BOUNDARY.md) f
     windows_bounded_evidence_complete = true
     experiment_complete = true
     evidence_frozen = true
+    cli_interface_gate_validated = true
     production_ready = false
     canonical_authority = false
 
 `windows_bounded_evidence_complete = true` refers only to the completed and frozen bounded Windows authority-boundary experiment.
 
 `experiment_complete = true` and `evidence_frozen = true` reflect completion and freeze of the bounded v0.1 RUN-001 experiment and evidence package. They do not imply production readiness or canonical authority.
+
+`cli_interface_gate_validated = true` refers to the tested v0.1 CLI contract and automated interface integration tests. It does not imply distribution readiness, production API stability, or canonical authority.
 
 Do not infer more than these fields support.
