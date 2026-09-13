@@ -1,0 +1,61 @@
+{
+    "schema":  "arcstone-execution-boundary/run-manifest-v1",
+    "system":  "Arcstone Execution Boundary",
+    "repository":  "arcstone-mcp-sidecar",
+    "version":  "0.1.0",
+    "run_id":  "RUN-001",
+    "classification":  [
+                           "experimental",
+                           "downstream",
+                           "non-canonical"
+                       ],
+    "baseline":  {
+                     "git_commit":  "0e0a0c6486334e996f43ff6781dfedb746481828",
+                     "branch":  "main",
+                     "worktree_state":  "clean"
+                 },
+    "references":  {
+                       "procedure":  "docs/RUN001-PROCEDURE.md",
+                       "protocol":  "machine/protocol.json",
+                       "test_matrix":  "machine/test-matrix.json",
+                       "repo_policy":  "machine/repo-policy.json",
+                       "system_manifest":  "machine/system-manifest.json",
+                       "windows_authority_record":  "docs/WINDOWS-AUTHORITY-BOUNDARY.md"
+                   },
+    "evidence":  {
+                     "environment":  "evidence/run-001/environment.json",
+                     "cargo_test":  "evidence/run-001/cargo-test.txt",
+                     "windows_verify":  "evidence/run-001/windows-verify.txt",
+                     "evidence_map":  "evidence/run-001/evidence-map.json",
+                     "frozen_windows_package_sha256":  "e8beae870214d1e53cf4f7930341b79ffdb7ac884e563cac2c52ef1d8818ccaa"
+                 },
+    "integrated_test_matrix":  {
+                                   "range":  "T0-T17",
+                                   "determination":  "PASS"
+                               },
+    "invariants":  {
+                       "I1":  {
+                                  "statement":  "NO VALID AUTHORIZATION =\u003e ZERO PROTECTED ACTUATION",
+                                  "determination":  "PASS",
+                                  "basis":  "native T1-T5, T12, T14 and related denied-path evidence"
+                              },
+                       "I2":  {
+                                  "statement":  "ONE VALID SINGLE-USE AUTHORIZATION =\u003e AT MOST ONE PROTECTED ACTUATION",
+                                  "determination":  "PASS",
+                                  "basis":  "native T0, T6, T16, T17 plus frozen Windows replay evidence"
+                              },
+                       "I3":  {
+                                  "statement":  "UNTRUSTED PRODUCER !=\u003e PROTECTED RESOURCE",
+                                  "determination":  "PASS_BOUNDED",
+                                  "basis":  "frozen tested Windows ACL authority configuration plus bounded structural/public-API T8 evidence"
+                              }
+                   },
+    "interpretation":  {
+                           "production_ready":  false,
+                           "canonical_authority":  false,
+                           "general_os_security_claim":  false,
+                           "universal_bypass_resistance_claim":  false,
+                           "exactly_once_execution_claim":  false
+                       },
+    "freeze_state":  "FROZEN"
+}

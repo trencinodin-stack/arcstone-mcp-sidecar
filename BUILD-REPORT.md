@@ -3,7 +3,7 @@
 **Repository:** `arcstone-mcp-sidecar`
 **System:** Arcstone Execution Boundary
 **Version:** 0.1.0 implementation starter
-**Status:** BOUNDED EVIDENCE ESTABLISHED / RUN 001 NOT YET FROZEN
+**Status:** INTEGRATED T0-T17 PASS / RUN 001 FROZEN
 
 ## Purpose
 
@@ -36,18 +36,18 @@ This report gives humans and machine operators one compact place to determine wh
 - separate non-administrator producer and authority principals established for the bounded Windows experiment
 - explicit filesystem ACL separation established in a dedicated disposable runtime
 - T7 direct protected-resource bypass denial: PASS under the tested ACL configuration
-- T8 direct actuator bypass: PASS — bounded public-API/structural result
+- T8 direct actuator bypass: PASS - bounded public-API/structural result
 - T9 forged-issuance denial: PASS under the tested ACL configuration
-- authorized execution: `ISSUED` → `CONSUMED`, decision `ALLOW`, actuation `SUCCEEDED`
+- authorized execution: `ISSUED` -> `CONSUMED`, decision `ALLOW`, actuation `SUCCEEDED`
 - replay of consumed authorization: `DENY`, actuation `NOT_ATTEMPTED`
 - I2 single-use / at-most-once authority supported for the tested authorization
 - I3 producer-to-protected-resource separation supported for the tested Windows configuration
 - bounded Windows evidence package frozen and hash-anchored
+- final integrated T0-T17 evidence run: PASS
+- Execution Boundary RUN-001 evidence package frozen and hash-anchored
 
 ## Not Yet Established
 
-- final integrated T0–T17 evidence run
-- frozen Execution Boundary Run 001 evidence
 - production authorization security
 - general Windows sandbox security
 - arbitrary hostile-code containment
@@ -68,17 +68,15 @@ See [`docs/WINDOWS-AUTHORITY-BOUNDARY.md`](docs/WINDOWS-AUTHORITY-BOUNDARY.md) f
 
 ## Machine Decision
 
-```text
-implementation_present = true
-windows_bounded_evidence_complete = true
-experiment_complete = false
-evidence_frozen = false
-production_ready = false
-canonical_authority = false
-```
+    implementation_present = true
+    windows_bounded_evidence_complete = true
+    experiment_complete = true
+    evidence_frozen = true
+    production_ready = false
+    canonical_authority = false
 
 `windows_bounded_evidence_complete = true` refers only to the completed and frozen bounded Windows authority-boundary experiment.
 
-`experiment_complete = false` and `evidence_frozen = false` remain in force until the final integrated T0–T17 evidence run and Execution Boundary Run 001 are completed and frozen.
+`experiment_complete = true` and `evidence_frozen = true` reflect completion and freeze of the bounded v0.1 RUN-001 experiment and evidence package. They do not imply production readiness or canonical authority.
 
 Do not infer more than these fields support.
