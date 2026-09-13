@@ -1,0 +1,30 @@
+{
+  "schema": "arcstone-execution-boundary/protocol-v1",
+  "request": {
+    "authorization_id": "string",
+    "action": "WRITE_PROTECTED_FILE",
+    "resource_id": "EFFECT_LOG",
+    "payload_hex": "hex-string"
+  },
+  "decision": [
+    "ALLOW",
+    "DENY"
+  ],
+  "authorization_state": [
+    "ABSENT",
+    "INVALID",
+    "ISSUED",
+    "CONSUMED"
+  ],
+  "actuation_outcome": [
+    "NOT_ATTEMPTED",
+    "SUCCEEDED",
+    "FAILED"
+  ],
+  "authority_rules": [
+    "producer_identity_is_not_authority",
+    "core_observation_is_not_authority",
+    "authorization_must_bind_action_resource_payload",
+    "one_authorization_allows_at_most_one_actuation_attempt"
+  ]
+}
