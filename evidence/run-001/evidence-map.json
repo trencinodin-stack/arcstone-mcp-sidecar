@@ -1,0 +1,146 @@
+{
+    "schema":  "arcstone-execution-boundary/evidence-map-v1",
+    "system":  "Arcstone Execution Boundary",
+    "version":  "0.1.0",
+    "run_id":  "RUN-001",
+    "baseline_commit":  "0e0a0c6486334e996f43ff6781dfedb746481828",
+    "native_evidence":  [
+                            "evidence/run-001/cargo-test.txt",
+                            "evidence/run-001/windows-verify.txt"
+                        ],
+    "frozen_windows_evidence":  {
+                                    "record":  "docs/WINDOWS-AUTHORITY-BOUNDARY.md",
+                                    "package_sha256":  "e8beae870214d1e53cf4f7930341b79ffdb7ac884e563cac2c52ef1d8818ccaa",
+                                    "interpretation":  "bounded tested Windows authority configuration only"
+                                },
+    "tests":  [
+                  {
+                      "id":  "T0",
+                      "expected":  "ALLOW_CONSUMED_SUCCEEDED_ONE_EFFECT",
+                      "evidence_source":  "tests/authorization_matrix.rs::t0_valid_exact_authorization_succeeds_once",
+                      "observed":  "PASS",
+                      "determination":  "PASS"
+                  },
+                  {
+                      "id":  "T1",
+                      "expected":  "DENY_ZERO_EFFECT",
+                      "evidence_source":  "tests/authorization_matrix.rs::t1_absent_authorization_denied",
+                      "observed":  "PASS",
+                      "determination":  "PASS"
+                  },
+                  {
+                      "id":  "T2",
+                      "expected":  "DENY_ZERO_EFFECT",
+                      "evidence_source":  "tests/invalid_authorization.rs::t2_invalid_authorization_record_is_denied",
+                      "observed":  "PASS",
+                      "determination":  "PASS"
+                  },
+                  {
+                      "id":  "T3",
+                      "expected":  "DENY_ZERO_EFFECT",
+                      "evidence_source":  "tests/authorization_matrix.rs::t3_payload_mutation_denied_without_consuming",
+                      "observed":  "PASS",
+                      "determination":  "PASS"
+                  },
+                  {
+                      "id":  "T4",
+                      "expected":  "DENY_ZERO_EFFECT",
+                      "evidence_source":  "tests/authorization_matrix.rs::t4_resource_substitution_denied",
+                      "observed":  "PASS",
+                      "determination":  "PASS"
+                  },
+                  {
+                      "id":  "T5",
+                      "expected":  "DENY_ZERO_EFFECT",
+                      "evidence_source":  "tests/authorization_matrix.rs::t5_action_substitution_denied",
+                      "observed":  "PASS",
+                      "determination":  "PASS"
+                  },
+                  {
+                      "id":  "T6",
+                      "expected":  "DENY_ZERO_ADDITIONAL_EFFECT",
+                      "evidence_source":  "tests/replay.rs::t6_replay_is_denied",
+                      "observed":  "PASS",
+                      "determination":  "PASS"
+                  },
+                  {
+                      "id":  "T7",
+                      "expected":  "OS_DENY_ZERO_EFFECT",
+                      "evidence_source":  "docs/WINDOWS-AUTHORITY-BOUNDARY.md - frozen bounded Windows evidence",
+                      "observed":  "Direct protected-resource write denied under tested producer ACL",
+                      "determination":  "PASS"
+                  },
+                  {
+                      "id":  "T8",
+                      "expected":  "DENY_OR_UNREACHABLE_ZERO_EFFECT",
+                      "evidence_source":  "docs/WINDOWS-AUTHORITY-BOUNDARY.md - private actuator/API probe plus tested authority environment",
+                      "observed":  "Production actuator unreachable through public Rust API; direct producer filesystem authority denied in tested environment",
+                      "determination":  "PASS"
+                  },
+                  {
+                      "id":  "T9",
+                      "expected":  "OS_DENY_ZERO_EFFECT",
+                      "evidence_source":  "docs/WINDOWS-AUTHORITY-BOUNDARY.md - frozen bounded Windows evidence",
+                      "observed":  "Forged authorization creation denied under tested producer ACL",
+                      "determination":  "PASS"
+                  },
+                  {
+                      "id":  "T10",
+                      "expected":  "NO_ACTUATION",
+                      "evidence_source":  "tests/malformed_and_stale.rs::t10_issued_authorization_alone_does_not_actuate",
+                      "observed":  "PASS",
+                      "determination":  "PASS"
+                  },
+                  {
+                      "id":  "T11",
+                      "expected":  "SAME_DECISION",
+                      "evidence_source":  "tests/identity_and_invalid_attempts.rs::t11_identity_metadata_does_not_change_decision",
+                      "observed":  "PASS",
+                      "determination":  "PASS"
+                  },
+                  {
+                      "id":  "T12",
+                      "expected":  "DENY_ZERO_EFFECT",
+                      "evidence_source":  "tests/core_separation.rs::t12_favorable_core_observation_without_authorization_is_denied",
+                      "observed":  "PASS",
+                      "determination":  "PASS"
+                  },
+                  {
+                      "id":  "T13",
+                      "expected":  "ALLOW_IF_EXACT_BINDINGS",
+                      "evidence_source":  "tests/core_separation.rs::t13_valid_authorization_with_core_omitted_can_allow",
+                      "observed":  "PASS",
+                      "determination":  "PASS"
+                  },
+                  {
+                      "id":  "T14",
+                      "expected":  "DENY_ZERO_EFFECT",
+                      "evidence_source":  "tests/malformed_and_stale.rs::t14_malformed_payload_hex_fails_closed",
+                      "observed":  "PASS",
+                      "determination":  "PASS"
+                  },
+                  {
+                      "id":  "T15",
+                      "expected":  "AUTH_REMAINS_ISSUED",
+                      "evidence_source":  "tests/identity_and_invalid_attempts.rs::t15_invalid_attempt_does_not_consume_valid_authorization",
+                      "observed":  "PASS",
+                      "determination":  "PASS"
+                  },
+                  {
+                      "id":  "T16",
+                      "expected":  "ALLOW_CONSUMED_FAILED_ZERO_EFFECT",
+                      "evidence_source":  "src/gate.rs::internal_tests::authorized_but_failed_actuator_consumes_authorization",
+                      "observed":  "PASS",
+                      "determination":  "PASS"
+                  },
+                  {
+                      "id":  "T17",
+                      "expected":  "AT_MOST_ONE_ALLOW_AND_EFFECT",
+                      "evidence_source":  "tests/concurrency.rs::t17_double_submit_has_at_most_one_allow",
+                      "observed":  "PASS",
+                      "determination":  "PASS"
+                  }
+              ],
+    "overall":  "PASS"
+}
+

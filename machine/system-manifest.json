@@ -31,8 +31,8 @@
   "authorization_semantics": "single-use-at-most-once",
   "evidence_state": {
     "windows_bounded_evidence_complete": true,
-    "final_integrated_t0_t17_complete": false,
-    "run_001_frozen": false,
+    "final_integrated_t0_t17_complete": true,
+    "run_001_frozen": true,
     "production_ready": false
   },
   "evidence_records": {

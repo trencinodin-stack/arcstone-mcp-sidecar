@@ -1,0 +1,13 @@
+{
+    "schema":  "arcstone-execution-boundary/run-environment-v1",
+    "system":  "Arcstone Execution Boundary",
+    "repository":  "arcstone-mcp-sidecar",
+    "version":  "0.1.0",
+    "run_id":  "RUN-001",
+    "git_commit":  "0e0a0c6486334e996f43ff6781dfedb746481828",
+    "branch":  "main",
+    "operating_system":  "Microsoft Windows NT 10.0.26200.0",
+    "rustc":  "rustc 1.98.1 (48a229cea 2026-09-01)",
+    "cargo":  "cargo 1.98.1 (797e8a9bc 2026-08-05)",
+    "execution_timestamp_utc":  "2026-09-13T16:27:49.2180378Z"
+}

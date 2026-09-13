@@ -1,0 +1,79 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.03s
+     Running unittests src\lib.rs (target\debug\deps\arcstone_execution_boundary-e7af2c7eb0945ba2.exe)
+
+running 1 test
+test gate::internal_tests::authorized_but_failed_actuator_consumes_authorization ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running unittests src\bin\arcstone-exec.rs (target\debug\deps\arcstone_exec-65985bdc63890a80.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests\authorization_matrix.rs (target\debug\deps\authorization_matrix-99db7fe3ed758306.exe)
+
+running 5 tests
+test t1_absent_authorization_denied ... ok
+test t3_payload_mutation_denied_without_consuming ... ok
+test t4_resource_substitution_denied ... ok
+test t5_action_substitution_denied ... ok
+test t0_valid_exact_authorization_succeeds_once ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests\concurrency.rs (target\debug\deps\concurrency-bcfaba1d72148b55.exe)
+
+running 1 test
+test t17_double_submit_has_at_most_one_allow ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests\core_separation.rs (target\debug\deps\core_separation-8f79a29e2f260cb4.exe)
+
+running 2 tests
+test t12_favorable_core_observation_without_authorization_is_denied ... ok
+test t13_valid_authorization_with_core_omitted_can_allow ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests\identity_and_invalid_attempts.rs (target\debug\deps\identity_and_invalid_attempts-347c2898164db9a5.exe)
+
+running 2 tests
+test t15_invalid_attempt_does_not_consume_valid_authorization ... ok
+test t11_identity_metadata_does_not_change_decision ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests\invalid_authorization.rs (target\debug\deps\invalid_authorization-99f2c8b1ae9dd18e.exe)
+
+running 1 test
+test t2_invalid_authorization_record_is_denied ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests\malformed_and_stale.rs (target\debug\deps\malformed_and_stale-134284f28b05485f.exe)
+
+running 2 tests
+test t10_issued_authorization_alone_does_not_actuate ... ok
+test t14_malformed_payload_hex_fails_closed ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests\replay.rs (target\debug\deps\replay-3082643b685c8b2b.exe)
+
+running 1 test
+test t6_replay_is_denied ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+   Doc-tests arcstone_execution_boundary
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+Arcstone Execution Boundary local Rust verification PASS.
+NOTE: OS-principal bypass tests are separate and are NOT proven by cargo test.

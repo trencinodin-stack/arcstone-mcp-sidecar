@@ -4,7 +4,7 @@
 **System:** Arcstone Execution Boundary
 **Version:** 0.1.0 implementation starter
 **Classification:** Experimental / Downstream / Non-Canonical
-**Current stage:** Minimal native implementation / bounded Windows evidence complete
+**Current stage:** Minimal native implementation / integrated RUN-001 evidence frozen
 
 ## Frozen upstream
 
@@ -33,16 +33,16 @@ Included:
 - replay and concurrency tests
 - core/evaluation separation tests
 
-Not yet validated:
+Validated:
 
-- final T0–T17 evidence run
-- frozen Run 001 evidence for this repository
+- final integrated T0-T17 evidence run: PASS
+- Execution Boundary RUN-001 evidence package: frozen and hash-anchored
 
 ## Windows authority-boundary evidence
 
 - bounded Windows two-principal authority experiment: complete
 - T7 direct protected-resource bypass: PASS under tested ACL configuration
-- T8 direct actuator bypass: PASS — bounded public-API/structural result
+- T8 direct actuator bypass: PASS - bounded public-API/structural result
 - T9 forged authorization issuance: PASS under tested ACL configuration
 - I2 single-use / at-most-once authority: supported for the tested authorization
 - I3 producer-to-protected-resource separation: supported for the tested Windows configuration
