@@ -1,0 +1,159 @@
+name: distribution
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v0.1.0"
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build ${{ matrix.platform }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: windows-x86_64
+            os: windows-latest
+            archive: arcstone-execution-boundary-v0.1.0-windows-x86_64.zip
+          - platform: linux-x86_64
+            os: ubuntu-latest
+            archive: arcstone-execution-boundary-v0.1.0-linux-x86_64.tar.gz
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Verify implementation
+        run: cargo test --all-targets
+
+      - name: Build release binary
+        run: cargo build --release --bin arcstone-exec
+
+      - name: Verify CLI version
+        shell: bash
+        run: |
+          if [[ "${{ runner.os }}" == "Windows" ]]; then
+            actual="$(./target/release/arcstone-exec.exe --version | tr -d '\r')"
+          else
+            actual="$(./target/release/arcstone-exec --version)"
+          fi
+
+          test "$actual" = "arcstone-exec 0.1.0"
+
+      - name: Verify CLI help
+        shell: bash
+        run: |
+          if [[ "${{ runner.os }}" == "Windows" ]]; then
+            ./target/release/arcstone-exec.exe --help
+          else
+            ./target/release/arcstone-exec --help
+          fi
+
+      - name: Package Windows artifact
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Path dist/package -Force | Out-Null
+          Copy-Item target/release/arcstone-exec.exe dist/package/
+          Copy-Item LICENSE dist/package/
+          Copy-Item README.md dist/package/
+          Compress-Archive `
+            -Path dist/package/* `
+            -DestinationPath "dist/${{ matrix.archive }}"
+
+      - name: Package Linux artifact
+        if: runner.os == 'Linux'
+        shell: bash
+        run: |
+          mkdir -p dist/package
+          cp target/release/arcstone-exec dist/package/
+          cp LICENSE dist/package/
+          cp README.md dist/package/
+          tar -czf "dist/${{ matrix.archive }}" \
+            -C dist/package \
+            arcstone-exec LICENSE README.md
+
+      - name: Upload packaged artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.platform }}
+          path: dist/${{ matrix.archive }}
+          if-no-files-found: error
+
+  assemble:
+    name: Assemble release bundle
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download packaged artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: release-assets
+
+      - name: Assemble release assets
+        shell: bash
+        run: |
+          mkdir dist
+
+          find release-assets -type f \
+            \( -name '*.zip' -o -name '*.tar.gz' \) \
+            -exec cp {} dist/ \;
+
+          (
+            cd dist
+            sha256sum \
+              arcstone-execution-boundary-v0.1.0-linux-x86_64.tar.gz \
+              arcstone-execution-boundary-v0.1.0-windows-x86_64.zip \
+              > SHA256SUMS.txt
+
+            sha256sum -c SHA256SUMS.txt
+          )
+
+      - name: Upload release bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-bundle
+          path: |
+            dist/arcstone-execution-boundary-v0.1.0-linux-x86_64.tar.gz
+            dist/arcstone-execution-boundary-v0.1.0-windows-x86_64.zip
+            dist/SHA256SUMS.txt
+          if-no-files-found: error
+
+  publish:
+    name: Publish GitHub Release
+    if: github.event_name == 'push' && github.ref == 'refs/tags/v0.1.0'
+    needs: assemble
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Download release bundle
+        uses: actions/download-artifact@v4
+        with:
+          name: release-bundle
+          path: dist
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        shell: bash
+        run: |
+          gh release create v0.1.0 \
+            dist/arcstone-execution-boundary-v0.1.0-linux-x86_64.tar.gz \
+            dist/arcstone-execution-boundary-v0.1.0-windows-x86_64.zip \
+            dist/SHA256SUMS.txt \
+            --title "Arcstone Execution Boundary v0.1.0" \
+            --notes "Experimental / Downstream / Non-Canonical reference release."
