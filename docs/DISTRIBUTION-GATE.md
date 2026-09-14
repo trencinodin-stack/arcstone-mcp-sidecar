@@ -5,7 +5,7 @@
 **Version:** `0.1.0`
 **Classification:** Experimental / Downstream / Non-Canonical
 **Gate:** Distribution
-**Status:** Pre-Validation
+**Status:** Open — Private Dry Run Validated / Public Cold Start Pending
 
 ## Purpose
 
@@ -123,6 +123,41 @@ The following are not required to close the initial v0.1 Distribution Gate:
 
 These may be evaluated independently after the initial distribution surface is proven.
 
+## Private distribution dry-run evidence
+
+The prospective distribution workflow was exercised by manual GitHub Actions dispatch against commit:
+
+```text
+8dcee427652a6a6cfd01945b4f8058de6ddbfe69
+```
+
+GitHub Actions run:
+
+```text
+34798985615
+```
+
+The bounded dry run established:
+
+- Windows x86-64 build/test/package job: PASS
+- Linux x86-64 build/test/package job: PASS
+- release-bundle assembly: PASS
+- tag-gated GitHub Release publication: SKIPPED as required for manual dispatch
+- release bundle contained exactly the two claimed platform archives and `SHA256SUMS.txt`
+- SHA-256 digests in `SHA256SUMS.txt` independently matched both resulting platform archives
+- Linux archive preserved executable permission on `arcstone-exec`
+
+Validated release-asset digests:
+
+```text
+8ca692d7baf84b07dcfd12aa1d3a93c71743ed3843a294f1a06215347d4f042e  arcstone-execution-boundary-v0.1.0-linux-x86_64.tar.gz
+55632d4a050f533f5f33bd2e93fec1dc40f1e1ed6cff9b8b5cdbb362cf80416c  arcstone-execution-boundary-v0.1.0-windows-x86_64.zip
+```
+
+This evidence validates the pre-release distribution machinery and release-bundle construction only. It does not establish that a public `v0.1.0` release exists, that public cold-start validation has passed, or that the Distribution Gate is closed.
+
+The repository remained private during this dry run.
+
 ## Cold-start validation
 
 Before the Distribution Gate closes, a cold-start verification MUST demonstrate that an independent user can:
@@ -162,6 +197,8 @@ arcstone_runtime_dependency        = false
 production_ready                   = false
 canonical_authority                = false
 ```
+
+The successful private dry run provides pre-release evidence for the build, test, packaging, checksum, CLI-preservation, and execution-semantics portions of this gate. It does not satisfy `cold_start_validation_passed`, and it does not by itself establish availability through the required public distribution surface.
 
 ## Stop conditions
 

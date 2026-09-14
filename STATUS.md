@@ -4,7 +4,7 @@
 **System:** Arcstone Execution Boundary
 **Version:** 0.1.0 implementation starter
 **Classification:** Experimental / Downstream / Non-Canonical
-**Current stage:** Minimal native implementation / integrated RUN-001 evidence frozen / CLI interface gate validated
+**Current stage:** Minimal native implementation / integrated RUN-001 evidence frozen / CLI interface gate validated / distribution dry run validated
 
 ## Frozen upstream
 
@@ -57,4 +57,6 @@ Validated:
 - WASM
 - cryptographic capabilities
 - network transport
-- product/distribution work
+- public v0.1.0 release
+- public cold-start distribution validation
+- package-manager publication

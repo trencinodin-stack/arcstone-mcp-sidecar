@@ -59,7 +59,8 @@ v0.1 does not require or claim:
 - network APIs
 - generalized policy engines
 - agent frameworks
-- package distribution
+- package-manager publication
+- public production distribution guarantees
 - exactly-once real-world execution
 - production authorization security
 - AI alignment or general agent safety

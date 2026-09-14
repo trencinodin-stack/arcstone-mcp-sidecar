@@ -34,7 +34,8 @@
     "final_integrated_t0_t17_complete": true,
     "run_001_frozen": true,
     "cli_interface_gate_validated": true,
-    "production_ready": false
+"distribution_dry_run_validated": true,
+"production_ready": false
   },
   "evidence_records": {
     "windows_authority_boundary": "docs/WINDOWS-AUTHORITY-BOUNDARY.md"
@@ -47,7 +48,7 @@
     "network-api",
     "policy-dsl",
     "agent-framework",
-    "package-distribution"
+    "package-manager-publication"
   ],
   "status_files": [
     "STATUS.md",
