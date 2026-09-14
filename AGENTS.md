@@ -2,6 +2,38 @@
 
 This repository is an experimental downstream realization.
 
+## Public research relationship
+
+The public Arcstone research surface consists of three independently scoped repositories:
+
+```text
+arcstone-continuity-core
+    frozen deterministic Path A reference surface
+
+arcstone-path-a-ingress-lab
+    external-producer ingress and replay evidence
+
+arcstone-mcp-sidecar
+    Arcstone Execution Boundary — this repository
+```
+
+These repositories form a conceptual research and evidence progression, not a mandatory runtime pipeline.
+
+The Path A Ingress Lab and Execution Boundary are sibling downstream investigations of the frozen Arcstone Continuity Core.
+
+For this repository:
+
+```text
+deterministic evaluation
+≠ authorization
+≠ actuation
+≠ observed effect
+```
+
+A favorable Continuity Core result does not create execution authority. The Execution Boundary must preserve its independent authorization lifecycle and must not infer authorization from upstream evaluation.
+
+The repository name `arcstone-mcp-sidecar` is historical. The v0.1.0 implementation is the **Arcstone Execution Boundary** and does not implement MCP.
+
 ## Hard boundaries
 
 Do not:
