@@ -185,6 +185,14 @@ This evidence does **not** establish general Windows sandbox security, arbitrary
 
 See [`docs/WINDOWS-AUTHORITY-BOUNDARY.md`](docs/WINDOWS-AUTHORITY-BOUNDARY.md) for the complete bounded evidence record and freeze limitations.
 
+## Distribution & non-support boundary
+
+This tool is distributed strictly via **GitHub Static Releases** (compiled platform binaries) and the official **NPM Registry** (`npx`).
+
+- **Official Execution:** `npx @arcstone/mcp-sidecar` or direct static binary invocation.
+- **Explicit Non-Support:** There is **no official PyPI package** (`pip install`). Do not attempt to install or execute this system via `pip` or Python package managers.
+- **Zero Operational Cost:** Requires zero SaaS subscriptions, zero hosted APIs, zero account creation, and zero background daemons ($C_{\text{ops}} = 0$).
+
 ## Machine / AI / autonomous-agent navigation
 
 This repository is intentionally machine-operable and machine-readable.
