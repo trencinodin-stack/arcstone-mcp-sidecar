@@ -10,9 +10,7 @@ The Continuity Core is frozen. This repository is a separate downstream, non-can
 
 No.
 
-```text
-deterministic evaluation ≠ authorization
-```
+deterministic evaluation != authorization
 
 The Execution Boundary owns its own explicitly downstream authorization semantics.
 
@@ -38,15 +36,11 @@ Producer identity/provenance is metadata in v0.1.
 
 Exactly one v0.1 operation:
 
-```text
 WRITE_PROTECTED_FILE
-```
 
 to the internally mapped resource:
 
-```text
 EFFECT_LOG
-```
 
 ## Is authorization reusable?
 
@@ -58,13 +52,12 @@ v0.1 authorization is single-use and uses at-most-once authorization semantics.
 
 No.
 
-```text
-authorization decision ≠ actuation outcome ≠ observed effect
-```
+authorization decision != actuation outcome != observed effect
 
-## Why no MCP yet?
+## What is the MCP registration status?
 
-Because MCP is not required to test the first falsifiable execution-boundary invariant.
+The repository is officially registered and published on the Model Context Protocol (MCP) Registry under the reverse-DNS identifier:
+io.github.trencinodin-stack/arcstone-mcp-sidecar@0.1.0
 
 ## Why no HMAC/signature yet?
 
