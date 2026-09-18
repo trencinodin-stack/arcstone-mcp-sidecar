@@ -15,13 +15,13 @@ arcstone-path-a-ingress-lab
 
 arcstone-mcp-sidecar
     Arcstone Execution Boundary — this repository
+```
 These repositories form a conceptual research and evidence progression, not a mandatory runtime pipeline.
 
 The Path A Ingress Lab and Execution Boundary are sibling downstream investigations of the frozen Arcstone Continuity Core.
 
 For this repository:
 
-Plaintext
 deterministic evaluation
 ≠ authorization
 ≠ actuation
@@ -67,11 +67,9 @@ At most one protected actuation attempt.
 Resource identity
 The only authorized v0.1 resource identifier is:
 
-Plaintext
 EFFECT_LOG
 It maps internally to:
 
-Plaintext
 <root>/protected/effect.bin
 The producer never supplies the filesystem target path used by the actuator.
 
@@ -85,6 +83,5 @@ The bounded Windows authority-boundary experiment, integrated T0–T17 adversari
 
 Before making OS-authority claims, read:
 
-Plaintext
 docs/WINDOWS-AUTHORITY-BOUNDARY.md
 The recorded Windows evidence supports only the tested producer/authority principal separation and ACL configuration. It does not establish general Windows sandbox security, arbitrary hostile-code containment, universal bypass resistance, or production authorization security.
