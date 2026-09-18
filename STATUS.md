@@ -4,7 +4,7 @@
 **System:** Arcstone Execution Boundary
 **Version:** 0.1.0 implementation starter
 **Classification:** Experimental / Downstream / Non-Canonical
-**Current stage:** Minimal native implementation / integrated RUN-001 evidence frozen / CLI interface gate validated / distribution dry run validated
+**Current stage:** Minimal native implementation / integrated RUN-001 evidence frozen / CLI interface gate validated / official MCP Registry indexed
 
 ## Frozen upstream
 
@@ -16,12 +16,14 @@
 - Blind architecture reconstruction: completed across Gemini, ChatGPT, and Grok
 - Downstream specification sanity audit: approved for implementation
 - Master Substrate upstream admission audit: approved for downstream admission
+- MCP Registry indexing: officially published under `io.github.trencinodin-stack/arcstone-mcp-sidecar@0.1.0`
 - Blocking architectural conflicts: none identified in the admission record
 
 ## Current implementation scope
 
 Included:
 
+- Model Context Protocol (MCP) spec-compliant execution boundary interface
 - explicit request model
 - trusted issuer fixture
 - boundary-owned authorization records
@@ -53,10 +55,7 @@ Validated:
 
 ## Deferred
 
-- MCP
 - WASM
 - cryptographic capabilities
 - network transport
-- public v0.1.0 release
 - public cold-start distribution validation
-- package-manager publication
