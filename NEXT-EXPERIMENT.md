@@ -1,8 +1,3 @@
----
-
-### 2. `NEXT-EXPERIMENT.md`
-
-```markdown
 # NEXT EXPERIMENT: ISOLATION HARDENING (PHASE 6)
 
 ## Current state
