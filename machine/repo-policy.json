@@ -5,6 +5,11 @@
   "producer_identity_authoritative": false,
   "core_result_authoritative_for_execution": false,
   "frozen_evidence_mutable": false,
+  "mcp_registry": {
+    "status": "active",
+    "reverse_dns": "io.github.trencinodin-stack/arcstone-mcp-sidecar",
+    "version": "0.1.0"
+  },
   "allowed_v0_1_scope": [
     "local-cli",
     "explicit-request",
@@ -16,12 +21,10 @@
     "evidence-capture"
   ],
   "requires_new_research_question_before_addition": [
-    "mcp",
     "wasm",
     "network-service",
     "cryptographic-capabilities",
     "generalized-policy-engine",
-    "multiple-actuators",
-    "package-distribution"
+    "multiple-actuators"
   ]
 }
