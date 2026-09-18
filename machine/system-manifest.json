@@ -26,6 +26,11 @@
     "local-cli",
     "stdio"
   ],
+  "mcp_registry": {
+    "status": "active",
+    "reverse_dns": "io.github.trencinodin-stack/arcstone-mcp-sidecar",
+    "version": "0.1.0"
+  },
   "protected_operation": "WRITE_PROTECTED_FILE",
   "protected_resource_id": "EFFECT_LOG",
   "authorization_semantics": "single-use-at-most-once",
@@ -34,21 +39,19 @@
     "final_integrated_t0_t17_complete": true,
     "run_001_frozen": true,
     "cli_interface_gate_validated": true,
-"distribution_dry_run_validated": true,
-"production_ready": false
+    "distribution_dry_run_validated": true,
+    "production_ready": false
   },
   "evidence_records": {
     "windows_authority_boundary": "docs/WINDOWS-AUTHORITY-BOUNDARY.md"
   },
   "deferred": [
-    "mcp",
     "wasm",
     "hmac",
     "pki",
     "network-api",
     "policy-dsl",
-    "agent-framework",
-    "package-manager-publication"
+    "agent-framework"
   ],
   "status_files": [
     "STATUS.md",
