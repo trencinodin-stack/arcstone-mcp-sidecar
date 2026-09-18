@@ -5,7 +5,7 @@
 **Status:** Experimental / Downstream / Non-Canonical / Bounded Evidence  
 **Version:** 0.1.0 implementation starter
 
-> **Repository naming note:** `arcstone-mcp-sidecar` is the historical repository identity. The v0.1.0 implementation is the **Arcstone Execution Boundary** and does not implement MCP.
+> **Repository naming note:** `arcstone-mcp-sidecar` is published on the official Model Context Protocol (MCP) Registry (`io.github.trencinodin-stack/arcstone-mcp-sidecar@0.1.0`). The underlying implementation exposes the **Arcstone Execution Boundary** deterministic interface. 
 
 This repository is the initial native implementation of the frozen **Arcstone Execution Boundary v0.1 experimental specification**.
 
@@ -78,7 +78,6 @@ authorization lifecycle
 
 v0.1 does not require or claim:
 
-- MCP
 - WASM
 - HMAC / signatures / PKI / KMS
 - network APIs
