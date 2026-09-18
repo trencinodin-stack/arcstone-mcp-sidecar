@@ -1,4 +1,3 @@
-Markdown
 # AGENTS.md
 
 This repository is an experimental downstream realization.
