@@ -83,7 +83,7 @@ v0.1 does not require or claim:
 - network APIs
 - generalized policy engines
 - agent frameworks
-- package-manager publication
+- package-manager distribution beyond the explicitly supported NPM package
 - public production distribution guarantees
 - exactly-once real-world execution
 - production authorization security
