@@ -47,9 +47,7 @@ collapse authorization, actuation, and observed effect into one state;
 
 weaken single-use claim semantics;
 
-generalize the bounded Windows authority-boundary evidence into a claim of universal OS-level bypass resistance;
-
-treat the completed Windows sub-experiment as completion of the final integrated T0–T17 evidence run or Execution Boundary Run 001.
+generalize the bounded Windows authority-boundary evidence into a claim of universal OS-level bypass resistance.
 
 v0.1 target
 One explicit authorization record.
@@ -83,12 +81,10 @@ Authorization IDs are explicit caller-supplied fixtures. Do not generate random 
 Evidence
 Evidence is downstream experimental evidence only. It has no canonical authority over frozen upstream systems.
 
-The bounded Windows authority-boundary experiment is complete and frozen for its tested configuration.
+The bounded Windows authority-boundary experiment, integrated T0–T17 adversarial validation matrix, and Execution Boundary Run 001 are completed and frozen under the active v0.1.0 baseline.
 
 Before making OS-authority claims, read:
 
 Plaintext
 docs/WINDOWS-AUTHORITY-BOUNDARY.md
 The recorded Windows evidence supports only the tested producer/authority principal separation and ACL configuration. It does not establish general Windows sandbox security, arbitrary hostile-code containment, universal bypass resistance, or production authorization security.
-
-The final integrated T0–T17 evidence run and frozen Execution Boundary Run 001 remain separate evidence milestones until explicitly completed and recorded.
