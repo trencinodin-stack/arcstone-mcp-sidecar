@@ -1,4 +1,3 @@
-Markdown
 # Arcstone Execution Boundary v0.1 Experiment
 
 ## Research question
